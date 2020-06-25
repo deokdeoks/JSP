@@ -1,0 +1,44 @@
+﻿-- 게시판 스키마
+
+Create Table freeboard ( 
+ bo_no     number(7)  not null,         -- 글번호(PK) 
+ bo_title  varchar2(100) not null,      -- 제목 
+ bo_writer varchar2(10) not null,       -- 글쓴이(아이디)
+ bo_nickname varchar2(100) not null,    -- 대화명
+ bo_pwd varchar2(20),                   -- 비번
+ bo_mail  varchar2(100),                -- 이메일
+ bo_ip  varchar2(20) ,                  -- 글쓴이 IP
+ bo_content clob ,                      -- 내용
+ bo_hit number(5) default 0,            -- 조회수
+ bo_reg_date date default sysdate,      -- 최초 등록일  
+ bo_status char(1) default 'y',         -- 게시글 상태
+ -- 계층형을 위한 컬럼 시작
+ bo_group  number(7) not null,          -- 그룹번호
+ bo_seq    number(3) default 0,         -- 그룹내 순번  
+ bo_depth  number(3) default 0,         -- 글의 깊이(depth)
+  -- 계층형을 위한 컬럼 끝
+ constraint pk_freeboard primary key(bo_no),
+ constraint fr_freeboard foreign key(bo_writer)
+ references member(mem_id)
+);
+
+
+Create sequence freeboard_seq maxvalue 9999999;
+
+comment on table freeboard is '자유게시판 테이블';
+comment on column freeboard.bo_no is '글번호(PK)';
+comment on column freeboard.bo_title is '제목 ';
+comment on column freeboard.bo_writer is '글쓴이';
+comment on column freeboard.bo_nickname is '대화명';
+comment on column freeboard.bo_pwd is '비번';
+comment on column freeboard.bo_mail is '이메일';
+comment on column freeboard.bo_ip is '글쓴이 IP';
+comment on column freeboard.bo_content is '내용';
+comment on column freeboard.bo_hit is '조회수';
+comment on column freeboard.bo_reg_date is '최초 등록일';
+comment on column freeboard.bo_status is '게시글 상태';
+ -- 계층형을 위한 컬럼 시작
+comment on column freeboard.bo_group is '그룹번호';
+comment on column freeboard.bo_seq is '그룹내 순번  ';
+comment on column freeboard.bo_depth is '글의 깊이(스탭)';
+ -- 계층형을 위한 컬럼 끝

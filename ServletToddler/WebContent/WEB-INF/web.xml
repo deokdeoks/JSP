@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ServletToddler</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 클라이언트(브라우저-데스크탑, 모바일, ...)의 컨텐츠 제공 요청을 처리하는 서블릿 활용
+		서블릿 - 자바 클래스
+		    - 동적인 컨텐츠 작성가능
+		    - 작성된 컨텐츠를 클라이언트(브라우저) 전송 -> 응답전송
+		    - 컨텐츠 작성을 위해 활용되어야 하는 클라이언트단에 유효한 언어(html, javascript, jquery)가 모두
+			     문자열 처리.
+			     
+		1. 클라이언트(브라우저) 요청
+			* 주소 : 프로토콜 : //도메인 또는 IP:/컨텍스트 루트(패스)/서블릿 패스
+			브라우저 주소창 : http://localhost/ServletToddler/hello
+			프로토콜 : http
+			도메인 또는 IP : localhost(루프백 도메인) or 127.0.0.1(루프백 IP) - 0:0:0:0:0:0:0:0
+			포트번호 : 80(http 프로토콜 기본 포트번호 - 주소 표현시 생략될 수 있음)
+			컨텍스트 루트(패스) : ServletToddler - 해당 웹 서버 내 서비스 가능한 웹 어플리케이션 명
+			서블릿 패스 : /hello - 클라이언트 요청을 처리하는 서버 내 자원 접근 경로
+   -->
+   <servlet>
+   		<servlet-name>hello</servlet-name>
+   		<servlet-class>kr.or.ddit.hello.controller.HelloController</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>hello</servlet-name>
+   		<url-pattern>/hello</url-pattern>
+   </servlet-mapping>
+   
+   <!-- 
+   		http://localhost/ServletToddler/join/loginForm
+    -->
+   
+   <servlet>
+   		<servlet-name>loginForm</servlet-name>
+   		<servlet-class>kr.or.ddit.join.controller.LoginFormController</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>loginForm</servlet-name>
+   		<url-pattern>/join/loginForm</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>loginCheck</servlet-name>
+   		<servlet-class>kr.or.ddit.join.controller.LoginCheckController</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>loginCheck</servlet-name>
+   		<url-pattern>/join/loginCheck</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+  		<servlet-name>memberList</servlet-name>
+  		<servlet-class>kr.or.ddit.member.controller.MemberListController</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>memberList</servlet-name>
+   		<url-pattern>/member/memberList</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+   		<servlet-name>memberView</servlet-name>
+   		<servlet-class>kr.or.ddit.member.controller.MemberViewController</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>memberView</servlet-name>
+   		<url-pattern>/member/memberView</url-pattern>
+   </servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deleteMemberInfo</servlet-name>
+		<servlet-class>kr.or.ddit.member.controller.DeleteMembercontroller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteMemberInfo</servlet-name>
+		<url-pattern>/member/deleteMemberInfo</url-pattern>
+	</servlet-mapping>  
+	
+	<servlet>
+		<servlet-name>updateMemberInfo</servlet-name>
+		<servlet-class>kr.or.ddit.member.controller.UpdateMemberController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateMemberInfo</servlet-name>
+		<url-pattern>/member/updateMemberInfo</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>memberForm</servlet-name>
+		<servlet-class>kr.or.ddit.member.controller.MemberFormController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberForm</servlet-name>
+		<url-pattern>/member/memberForm</url-pattern>
+	</servlet-mapping>
+</web-app>
